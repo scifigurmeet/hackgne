@@ -5,27 +5,27 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Your Uploaded Documents</h4>
-                  <p class="card-category"> Here, you can acces your uploaded documents.</p>
+                  <h4 class="card-title ">Your Groups</h4>
+                  <p class="card-category"> Manage Your Private Document Sharing Groups</p>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-hover" id="allFiles">
                       <thead class="text-primary">
                         <th>
-                        File Id
+                        Group ID
                         </th>
                         <th>
-                          File Name
+                        Group Name
                         </th>
                         <th>
-                          File type
+                        Members
                         </th>
                         <th>
-                          File Size
+                        Total Sharings
                         </th>
 						 <th>
-                          Actions
+                        Actions
                         </th>
                       </thead>
                     </table>
@@ -49,9 +49,7 @@ function getAllFiles(){
             {data: 'mime_type'},
             {data: 'file_size'},
 			{render: function(data, type, row){
-				return '<a style="padding: 12px;" href="uploads/'+row.path+'" class="btn btn-info" download="download"><i class="material-icons">cloud_download</i></a>'
-				//+'<a style="padding: 5px;" href="uploads/'+row.path+'" class="btn btn-info" download="download">Request Access</a>'
-				+'<a style="padding: 12px;" href="sendFile/'+row.path+'" class="btn btn-primary"><i class="material-icons">send</i></button></a>'
+				return '<a style="padding: 12px;" href="uploads/'+row.path+'" class="btn btn-info" download="download"><i class="material-icons">view_carousel</i>  Open Group</a>'
 				+'<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>';}}
         ]
     });

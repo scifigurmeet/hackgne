@@ -27,6 +27,14 @@ Route::get('/AllFiles', function(){
     return view('AllFiles');
 });
 
+Route::get('/sharedDocuments', function(){
+    return view('PublicDocuments');
+});
+
+Route::get('/sentDocuments', function(){
+    return view('sentDocuments');
+});
+
 Route::get('/test', function(){
     return authorize();
 });
@@ -37,6 +45,10 @@ Route::get('/logout', function(){
 
 Route::get('/createForm', function(){
     return view('create-form');
+});
+
+Route::get('/groups', function(){
+    return view('groups');
 });
 
 Route::get('/sendDocument', function(){

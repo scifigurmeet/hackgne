@@ -59,6 +59,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 </head>
 
 <body class="">
@@ -82,52 +84,28 @@
               <p>Dashboard</p>
             </a>
           </li>
+		  <li class="nav-item ">
+            <a class="nav-link" href="sharedDocuments">
+              <i class="material-icons">whatshot</i>
+              <p>Documents Wall</p>
+            </a>
+          </li>
           <li class="nav-item ">
             <a class="nav-link" href="AllFiles">
               <i class="material-icons">library_books</i>
-              <p>My Documents</p>
+              <p>Uploaded Documents</p>
+            </a>
+          </li>
+		  <li class="nav-item ">
+            <a class="nav-link" href="sentDocuments">
+              <i class="material-icons">send</i>
+              <p>Sent Documents</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="SendFile">
-              <i class="material-icons">content_paste</i>
-              <p>Send Documents</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="RequestFile">
-              <i class="material-icons">library_books</i>
-              <p>Request Documents</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>RTL Support</p>
-            </a>
-          </li>
-          <li class="nav-item active-pro ">
-            <a class="nav-link" href="./upgrade.html">
-              <i class="material-icons">unarchive</i>
-              <p>Upgrade to PRO</p>
+            <a class="nav-link" href="groups">
+              <i class="material-icons">group</i>
+              <p>Groups</p>
             </a>
           </li>
         </ul>

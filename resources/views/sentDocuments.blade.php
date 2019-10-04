@@ -5,8 +5,8 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Your Uploaded Documents</h4>
-                  <p class="card-category"> Here, you can acces your uploaded documents.</p>
+                  <h4 class="card-title ">All Sent Documents</h4>
+                  <p class="card-category"> Here, you can acces/view all documents sent by you.</p>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">

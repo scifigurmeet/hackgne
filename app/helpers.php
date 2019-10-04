@@ -73,4 +73,9 @@ function logout(){
 	request()->session()->forget('username');
 	header('Location: '.getHomeURL()."/login?loggedOut=True"); exit;
 }
+
+function getAllGroups(){
+	$data = DB::table('groups')->get();
+	return $data;
+}
 ?>
