@@ -59,14 +59,13 @@ function getUploadsSize(){
 }
 
 function getUserFullName(){
+	$request = request();
+    $username = $request->session()->get('username');
 	$data = DB::table('users')
 	->select('first_name','last_name')
+	->where('username',$username)
 	->get()[0];
 	return $full_name = $data->first_name." ".$data->last_name;
-}
-
-function getUserId(){
-	return 0;
 }
 
 function logout(){
@@ -77,6 +76,20 @@ function logout(){
 
 function getAllGroups(){
 	$data = DB::table('groups')->get();
+	foreach($data as $one){
+		$arr = explode(',',$one->member_user_ids);
+		$str = array();
+		foreach($arr as $a){
+			array_push($str,getUsername($a));
+		}
+		$one->member_user_ids = implode(', ',$str);
+		$one->created_by_user_id = getUsername($one->created_by_user_id);
+	}
+	return datatables()->of($data)->toJson();
+}
+
+function getAllUsers(){
+	$data = DB::table('users')->get();
 	return $data;
 }
 
@@ -137,5 +150,29 @@ function getFormData($id){
 	$data = DB::table('forms')->where('id',$id)->get()[0];
 	$data->structure = unserialize($data->structure);
 	return $data;
+}
+
+function send_document()
+{
+    $request = request();
+    $username = $request->session()->get('username');
+    $id = DB::table('users')->where('username',$username)->get()[0]->id;
+    $data = array();
+    $data['sent_from_id'] = $id;
+    $data['sent_to_ids'] = $request->send_user_ids;
+    $data['document_id'] = $request->document_id;
+    $data['description'] = $request->description;
+	DB::table('sent_files')->insert($data);
+	echo "Document Sent Successfully.";
+}
+
+function getUserID(){
+	$request = request();
+    $username = $request->session()->get('username');
+    return $id = DB::table('users')->where('username',$username)->get()[0]->id;
+}
+
+function getUsername($id){
+    return $id = DB::table('users')->where('id',$id)->get()[0]->username;
 }
 ?>

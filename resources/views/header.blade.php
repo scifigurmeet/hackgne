@@ -91,27 +91,27 @@ if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=T
               <p>Documents Wall</p>
             </a>
           </li>
-          <li class="nav-item <?php if($part == 'AllFiles') echo 'active'?>"">
+          <li class="nav-item <?php if($part == 'AllFiles') echo 'active'?>">
             <a class="nav-link" href="AllFiles">
               <i class="material-icons">library_books</i>
               <p>Uploaded Documents</p>
             </a>
           </li>
-		  <li class="nav-item ">
+		  <li class="nav-item <?php if($part == 'sentDocuments') echo 'active'?>">
             <a class="nav-link" href="sentDocuments">
               <i class="material-icons">send</i>
               <p>Sent Documents</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item <?php if($part == 'groups') echo 'active'?>">
             <a class="nav-link" href="groups">
               <i class="material-icons">group</i>
               <p>Groups</p>
             </a>
           </li>
-		  <li class="nav-item ">
+		  <li class="nav-item  <?php if($part == 'createForm') echo 'active'?>">
             <a class="nav-link" href="createForm">
-              <i class="material-icons">form</i>
+              <i class="material-icons">list_alt</i>
               <p>Create Form</p>
             </a>
           </li>

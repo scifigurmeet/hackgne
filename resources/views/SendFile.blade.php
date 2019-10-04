@@ -23,7 +23,11 @@
 					  ?>
 					  <button class="btn btn-primary btn-round" >Selected File is: &nbsp <b>{{$name}}</b></button>
 					  </div><br>
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form id="form" action="sendDocument" method="post" enctype="multipart/form-data">
+                    <div class="form-group col col-8">
+					<span class="label">Description</span>
+					<input type="text" name="description">
+				</div>
                         Send To:
                         <div class="form-group col col-5">
 					<select id="message_to" class="form-control" name="message_to" onchange="displayLogic(this.value);">
@@ -31,21 +35,23 @@
 					<option value="selectiveStudents">Groups</option>
 					</select>
 				</div>
+			
 				<div class="row" id="sections">
 				<div class="form-group col col-2">
-					<span class="label">Select the Group Name</span>
+					<span class="label">Select the User Name</span>
 				</div>
 				<div class="form-group col col-5">
 					<select id="section_id" class="form-control" name="section_id" multiple onchange="doIt();">
 					   <?php
-					   $data = getAllGroups();
+					   $data = getAllUsers();
 					   foreach($data as $one){
-					       echo '<option value="'.$one->id.'">'.$one->group_name.'</option>';
+					       echo '<option value="'.$one->id.'">'.$one->username.'</option>';
 					   }
 					   ?>
 					 
 					</select>
 				</div>
+					
 				
 				<input type="hidden" name="document_id" value="{{request()->id}}">
 				<input type="hidden" name="send_user_ids" value="0">
@@ -72,7 +78,7 @@
 			<input type="hidden" name="messageStatusID" value="newDraft">
 			<div class="row" style="padding:20px;">
 				
-				<button class="btn btn-danger">Send <i class="fa fa-share"></i></button>
+				<button onclick="$('#form').submit();" class="btn btn-danger" type="submit">Send <i class="fa fa-share"></i></button>
 			</div>
                 
                 

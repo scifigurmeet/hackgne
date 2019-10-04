@@ -42,7 +42,7 @@ function getAllFiles(){
 	 $('#allFiles').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{getHomeURL()}}/getAllFiles',
+        ajax: '{{getHomeURL()}}/getSharedWithUserFiles',
 		columns: [
 			{data: 'id'},
             {data: 'name'},

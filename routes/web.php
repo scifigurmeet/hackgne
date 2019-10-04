@@ -67,11 +67,18 @@ Route::get('/form', function(){
     return view('fillForm');
 });
 
-Route::get('/test', function(){
-    dd(getFormData(1));
+Route::get('/getAllGroups', function(){
+    return getAllGroups();
+});
+
+Route::post('/sendDocument', function(){
+    return send_document();
 });
 
 Route::get('/getAllFiles','Upload@showUploadedFiles');
+Route::get('/getUserFiles','Upload@showUserUploadedFiles');
+Route::get('/getUserSentFiles','Upload@showUserSentFiles');
+Route::get('/getSharedWithUserFiles','Upload@showSharedWithUserFiles');
 
 Route::post('/upload', 'Upload@uploadFile');
 

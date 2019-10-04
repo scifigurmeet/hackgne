@@ -27,6 +27,9 @@
 						 <th>
                         Actions
                         </th>
+						<th>
+                        Actions
+                        </th>
                       </thead>
                     </table>
                   </div>
@@ -42,12 +45,13 @@ function getAllFiles(){
 	 $('#allFiles').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{getHomeURL()}}/getAllFiles',
+        ajax: '{{getHomeURL()}}/getAllGroups',
 		columns: [
 			{data: 'id'},
-            {data: 'name'},
-            {data: 'mime_type'},
-            {data: 'file_size'},
+            {data: 'group_name'},
+            {data: 'member_user_ids'},
+            {data: 'created_by_user_id'},
+            {data: 'description'},
 			{render: function(data, type, row){
 				return '<a style="padding: 12px;" href="uploads/'+row.path+'" class="btn btn-info" download="download"><i class="material-icons">view_carousel</i>  Open Group</a>'
 				+'<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>';}}
