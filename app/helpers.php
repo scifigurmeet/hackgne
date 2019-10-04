@@ -27,7 +27,7 @@ function authorize(){
 			$data['token'] = uniqid();
 			DB::table('users')->where('username',$username)->update($data);
 			request()->session()->forget('gndecDOC');
-			header('Location: '.getHomeURL()); exit;
+			header('Location: '.getHomeURL()."/login?success=False"); exit;
 		}
 	}
 	catch(Exception $ex){
@@ -36,7 +36,7 @@ function authorize(){
 		DB::table('users')->where('username',$username)->update($data);
 		request()->session()->forget('gndecDOC');
 		echo 'Login Exception';
-		redirect('login?error=True&message='.$ex->getMessage());
+		header('Location: '.getHomeURL()."/login?success=False"); exit;
 	}
 }
 
@@ -66,5 +66,11 @@ function getUserFullName(){
 
 function getUserId(){
 	return 0;
+}
+
+function logout(){
+	request()->session()->forget('gndecDOC');
+	request()->session()->forget('username');
+	header('Location: '.getHomeURL()."/login?loggedOut=True"); exit;
 }
 ?>

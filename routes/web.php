@@ -31,6 +31,22 @@ Route::get('/test', function(){
     return authorize();
 });
 
+Route::get('/logout', function(){
+    return logout();
+});
+
+Route::get('/createForm', function(){
+    return view('create-form');
+});
+
+Route::get('/sendDocument', function(){
+    return view('SendFile');
+});
+
 Route::get('/getAllFiles','Upload@showUploadedFiles');
 
 Route::post('/upload', 'Upload@uploadFile');
+
+Route::post('/deleteFile/{id}', 'Upload@deleteFile');
+
+

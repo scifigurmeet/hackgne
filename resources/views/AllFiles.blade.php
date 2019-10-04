@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-hover responsive" id="allFiles">
+                    <table class="table table-hover" id="allFiles">
                       <thead class="text-primary">
                         <th>
                         File Id
@@ -24,7 +24,9 @@
                         <th>
                           File Size
                         </th>
-                       
+						 <th>
+                          Actions
+                        </th>
                       </thead>
                     </table>
                   </div>
@@ -45,10 +47,27 @@ function getAllFiles(){
 			{data: 'id'},
             {data: 'name'},
             {data: 'mime_type'},
+            {data: 'file_size'},
 			{render: function(data, type, row){
-				return 'Hello';}}
+				return '<a style="padding: 12px;" href="uploads/'+row.path+'" class="btn btn-info" download="download"><i class="material-icons">cloud_download</i></a>'
+				//+'<a style="padding: 5px;" href="uploads/'+row.path+'" class="btn btn-info" download="download">Request Access</a>'
+				+'<a style="padding: 12px;" href="sendFile/'+row.path+'" class="btn btn-primary"><i class="material-icons">send</i></button></a>'
+				+'<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>';}}
         ]
     });
+}
+
+function deleteFile(id){
+	if (confirm('Are you sure to DELETE this Document?')) {
+		$.ajax({
+      type: 'POST',
+      url: '{{getHomeURL()}}/deleteFile/'+id,
+      success: function(resultData) { $('#allFiles').DataTable().ajax.reload();},
+      error: function(resultData) { $('#allFiles').DataTable().ajax.reload();}
+		});
+	} else {
+    return;
+	}
 }
 $(document).ready(function(){getAllFiles();});
 </script>
