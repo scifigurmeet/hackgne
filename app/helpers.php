@@ -212,6 +212,8 @@ function getFormSubmissionData(){
 	->where('form_id',$id)
 	->select('data')
 	->get();
-	return datatables()->of($data)->toJson();
+	foreach($data as $one) $one->data = unserialize($one->data);
+	return $data;
+	//return datatables()->of($data)->toJson();
 }
 ?>

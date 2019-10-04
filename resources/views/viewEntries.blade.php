@@ -16,9 +16,6 @@
                   <p class="card-category"> {{ $data->description }}</p>
                 </div>
                 <div class="card-body">
-				<div>
-					<a href="upload"><button class="btn btn-danger">Upload New Document</button></a>
-				</div>
                   <div class="table-responsive">
                     <table class="table table-hover" id="allFiles">
                       <thead class="text-primary">
@@ -31,6 +28,20 @@
                           ?>
                           <th>Action</th>
                       </thead>
+                      <tbody>
+                          <?php
+                            $data = json_decode(getFormSubmissionData(request()->id));
+                            echo "<pre>";
+                            foreach($data as $row) {
+                                $arr = (array)$row;
+                                echo "<tr>";
+                                foreach($arr['data'] as $dat) {
+                                    echo "<td>".$dat."</td>";
+                                }
+                                echo "<td><a href='' style='padding: 12px;' class='btn btn-warning'>Download PDF</a></td></tr>";
+                            }
+                          ?>
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -42,12 +53,7 @@
       </div>
 <script>
 function getAllFiles(){
-	 $('#allFiles').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: '{{getHomeURL()}}/getFormSubmissionData?id='request()->id,
-		
-    });
+	 
 }
 
 function deleteFile(id){
@@ -62,6 +68,8 @@ function deleteFile(id){
     return;
 	}
 }
-$(document).ready(function(){getAllFiles();});
+$(document).ready(function(){
+    $('#allFiles').DataTable();
+});
 </script>
 @include('footer')
