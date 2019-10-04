@@ -21,8 +21,8 @@
 					  $data = getFileData(request()->id);
 					  $name = $data->name;
 					  ?>
-					  <button class="alert alert-info" style="width: 100%;">Selected File: <input type="text" class="form-control" readonly value="{{$name}}"></button>
-					  </div>
+					  <button class="btn btn-primary btn-round" >Selected File is: &nbsp <b>{{$name}}</b></button>
+					  </div><br>
                     <form action="" method="post" enctype="multipart/form-data">
                         Send To:
                         <div class="form-group col col-5">
@@ -36,7 +36,7 @@
 					<span class="label">Select the Group Name</span>
 				</div>
 				<div class="form-group col col-5">
-					<select id="section_id" class="form-control" name="section_id" multiple>
+					<select id="section_id" class="form-control" name="section_id" multiple onchange="doIt();">
 					   <?php
 					   $data = getAllGroups();
 					   foreach($data as $one){
@@ -46,6 +46,10 @@
 					 
 					</select>
 				</div>
+				
+				<input type="hidden" name="document_id" value="{{request()->id}}">
+				<input type="hidden" name="send_user_ids" value="0">
+
                     </form>
  
                       </div>
@@ -81,10 +85,6 @@
       </div>
       
       
-      
-    
-      
-      
 <script>
 
 $(document).ready(function() {
@@ -94,12 +94,25 @@ $(document).ready(function() {
 function displayLogic(value){
 	if(value=='allSchoolStudents'){
 		$('#sections').hide();
+		$('[name=send_user_ids]').val(0);
 	}
 	
 	if(value=='selectiveStudents'){
 		$('#sections').show();
+		$('[name=send_user_ids]').val("");
+		value = $('[name=section_id]').val().join(',');
+		         $('[name=send_user_ids]').val(value);
+		    
+		   
+		
+		
 		
 	}
+}
+function doIt(){
+    $('[name=send_user_ids]').val("");
+    value = $('[name=section_id]').val().join(',');
+		$('[name=send_user_ids]').val(value);
 }
 </script>
 

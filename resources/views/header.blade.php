@@ -1,4 +1,5 @@
 <?php
+$part = request()->segment(count(request()->segments()));
 $userValue = request()->session()->get('gndecDOC');
 $dbValue = getUserToken();
 if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=True'); exit;}
@@ -78,19 +79,19 @@ if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=T
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item <?php if($part == '') echo 'active'; ?>">
             <a class="nav-link" href="{{getHomeURL()}}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
-		  <li class="nav-item ">
+		  <li class="nav-item <?php if($part == 'sharedDocuments') echo 'active'?>">
             <a class="nav-link" href="sharedDocuments">
               <i class="material-icons">whatshot</i>
               <p>Documents Wall</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item <?php if($part == 'AllFiles') echo 'active'?>"">
             <a class="nav-link" href="AllFiles">
               <i class="material-icons">library_books</i>
               <p>Uploaded Documents</p>
@@ -106,6 +107,12 @@ if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=T
             <a class="nav-link" href="groups">
               <i class="material-icons">group</i>
               <p>Groups</p>
+            </a>
+          </li>
+		  <li class="nav-item ">
+            <a class="nav-link" href="createForm">
+              <i class="material-icons">form</i>
+              <p>Create Form</p>
             </a>
           </li>
         </ul>

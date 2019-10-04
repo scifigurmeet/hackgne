@@ -35,12 +35,20 @@ Route::get('/sentDocuments', function(){
     return view('sentDocuments');
 });
 
-Route::get('/test', function(){
+Route::post('/login', function(){
     return authorize();
+});
+
+Route::post('/signup', function(){
+    return signUp();
 });
 
 Route::get('/logout', function(){
     return logout();
+});
+
+Route::post('/addForm', function(){
+    return addForm();
 });
 
 Route::get('/createForm', function(){
@@ -53,6 +61,14 @@ Route::get('/groups', function(){
 
 Route::get('/sendDocument', function(){
     return view('SendFile');
+});
+
+Route::get('/form', function(){
+    return view('fillForm');
+});
+
+Route::get('/test', function(){
+    dd(getFormData(1));
 });
 
 Route::get('/getAllFiles','Upload@showUploadedFiles');

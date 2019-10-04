@@ -78,7 +78,7 @@
         
         <div class="row login-form-cont">
           <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 ml-auto mr-auto">
-            <form class="form" method="" action="" id="login-form">
+            <form class="form" method="post" action="" id="login-form">
               <div class="card card-login">
                 <div class="card-header card-header-primary text-center">
                   <h4 class="card-title">Login</h4>
@@ -105,8 +105,8 @@
                     </div>
                   </span>
                 </div>
-                <div class="card-footer justify-content-center" onclick="javascript:login()">
-                  <a href="javascript:void()" class="btn btn-primary btn-lg">Lets Go</a>
+                <div class="card-footer justify-content-center">
+                  <button type="submit" class="btn btn-primary btn-lg">Login</button>
                 </div>
               </div>
             </form>
@@ -115,7 +115,7 @@
         
         <div class="row signup-form-cont">
           <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 ml-auto mr-auto">
-            <form class="form" method="" action="" id="signup-form">
+            <form class="form" method="post" action="signup" id="signup-form">
               <div class="card card-login">
                 <div class="card-header card-header-primary text-center">
                   <h4 class="card-title">Sign Up</h4>
@@ -151,7 +151,7 @@
                           <i class="material-icons">face</i>
                         </span>
                       </div>
-                      <input type="email" class="form-control" placeholder="Username" value="" name="signup_username">
+                      <input type="text" class="form-control" placeholder="Username" value="" name="signup_username">
                     </div>
                   </span>
                   
@@ -162,7 +162,7 @@
                           <i class="material-icons">email</i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Email" value="" name="signup_email">
+                      <input type="email" class="form-control" placeholder="Email" value="" name="signup_email">
                     </div>
                   </span>
                   
@@ -189,8 +189,8 @@
                   </span>
                   
                 </div>
-                <div class="card-footer justify-content-center" onclick="javascript:signup()">
-                  <a href="javascript:void()" class="btn btn-primary btn-lg">Lets Go</a>
+                <div class="card-footer justify-content-center">
+                  <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
                 </div>
               </div>
             </form>
