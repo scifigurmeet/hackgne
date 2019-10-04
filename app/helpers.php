@@ -5,6 +5,42 @@ function getHomeURL(){
 	return 'http://192.168.16.113/dms';
 }
 
+function authorize(){
+	$request = request();
+	$username = $request->username;
+	$password = md5($request->password);
+	try{
+		$data = DB::table('users')
+		->where('username',$username)
+		->where('password',$password)
+		->get();
+		if(count($data)==1){
+			$data = array();
+			$data['token'] = uniqid();
+			DB::table('users')->where('username',$username)->update($data);
+			request()->session()->put('gndecDOC', $data['token']);
+			request()->session()->put('username', $username);
+		}
+		else{
+			$data = array();
+			$data['token'] = uniqid();
+			DB::table('users')->where('username',$username)->update($data);
+			request()->session()->forget('gndecDOC');
+		}
+	}
+	catch(Exception $ex){
+		$data = array();
+		$data['token'] = uniqid();
+		DB::table('users')->where('username',$username)->update($data);
+		request()->session()->forget('gndecDOC');
+	}
+}
+
+function getUserToken(){
+	$username = request()->session()->get('username');
+	return DB::table('users')->where('username',$username)->get()[0]->token;
+}
+
 function getUploadsSize(){
 	  $size = 0;
 

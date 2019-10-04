@@ -1,0 +1,22 @@
+{
+    "dir": "ltr",
+    "lang": "en-US",
+    "name": "Doc GNDEC",
+    "scope": "/",
+    "display": "fullscreen",
+    "start_url": "https://192.168.16.113/dms/",
+    "short_name": "Doc GNDEC",
+    "theme_color": "transparent",
+    "description": "Document Management System For Guru Nanak Dev Engineering College, Ludhiana",
+    "orientation": "any",
+    "background_color": "white",
+    "theme_color": "#dd2466",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "https://wtmatter.com/wp-content/uploads/2019/04/cropped-favicon.png",
+            "sizes": "512x512"
+        }
+    ]
+}

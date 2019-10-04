@@ -1,3 +1,8 @@
+<?php
+$value = Session::get('gndecDOC');
+echo $value."<br>";
+echo getUserToken();
+?>
 <!--
 =========================================================
  Material Dashboard - v2.1.1
@@ -18,11 +23,27 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="theme-color" content="#dd2466">
+	<script>
+		window.addEventListener('load', () => {
+		  registerSW();
+		});
+		async function registerSW() {
+		  if ('serviceWorker' in navigator) {
+			try {
+			  await navigator.serviceWorker.register('./sw.js');
+			} catch (e) {
+			  console.log(`SW registration failed`);
+			}
+		  }
+		}
+	</script>
+  <link rel='manifest' href='manifest.webmanifest'>
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Document Management System GNE
+    Document Management System GNDEC
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -60,19 +81,19 @@
           <li class="nav-item ">
             <a class="nav-link" href="AllFiles">
               <i class="material-icons">library_books</i>
-              <p>Uploaded Document</p>
+              <p>My Documents</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="SendFile">
               <i class="material-icons">content_paste</i>
-              <p>Send Document</p>
+              <p>Send Documents</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="RequestFile">
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <p>Request Documents</p>
             </a>
           </li>
           <li class="nav-item ">

@@ -27,6 +27,10 @@ Route::get('/AllFiles', function(){
     return view('AllFiles');
 });
 
+Route::get('/test', function(){
+    return authorize();
+});
+
 Route::get('/getAllFiles','Upload@showUploadedFiles');
 
 Route::post('/upload', 'Upload@uploadFile');
