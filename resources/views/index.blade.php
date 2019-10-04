@@ -8,15 +8,13 @@
                   <div class="card-icon">
                     <i class="material-icons">content_copy</i>
                   </div>
-                  <p class="card-category">Used Space</p>
-                  <h3 class="card-title">49/50
-                    <small>GB</small>
+                  <p class="card-category">Total Uploads</p>
+                  <h3 class="card-title">{{ getUploadsSize() }}
                   </h3>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons text-danger">warning</i>
-                    <a href="#pablo">Get More Space...</a>
+                    <i class="material-icons">access_time</i> As of {{ date('h:i:s A') }} IST
                   </div>
                 </div>
               </div>

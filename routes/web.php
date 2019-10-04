@@ -15,4 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/hello','Login@index');
+Route::get('/login', function(){
+    return view('login');
+});
+
+Route::get('/upload', function(){
+    return view('upload');
+});
+
+Route::post('/upload', 'Upload@uploadFile');
