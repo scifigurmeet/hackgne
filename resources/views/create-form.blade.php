@@ -51,8 +51,12 @@
       </div>
       <script>
       
+      function del(elm){
+          $(elm).parent().parent().remove();
+      }
+      
       function addRow(count) {
-                  var htm = '<div class="form-group"><div class="row"><div class="col-lg-2 col-md-2 col-sm-2"><b>Form Field '+count+'</b></div><div class="col-lg-3 col-md-3 col-sm-3"><input type="text" placeholder="Field Name" class="form-control" name="form_fields_name[]"></div><div class="col-lg-2 col-md-2 col-sm-2"><select name="form_fields_datatypes[]" class="form-control selected-option-dp"><option value="text">Text</option><option value="number">Number</option><option value="long_text">Long Text</option><option value="selected_options">Selected Options</option></select></div><div class="col-lg-3 col-md-3 col-sm-3"><input type="text" placeholder="Description" class="form-control" name="form_fields_description[]"></div><div class="col-lg-1 col-md-1 col-sm-1 btn btn-primary text-center"><i class="material-icons">delete</i></div></div></div>';
+                  var htm = '<div class="form-group"><div class="row"><div class="col-lg-2 col-md-2 col-sm-2"><b>Form Field '+count+'</b></div><div class="col-lg-3 col-md-3 col-sm-3"><input type="text" placeholder="Field Name" class="form-control" name="form_fields_name[]"></div><div class="col-lg-2 col-md-2 col-sm-2"><select name="form_fields_datatypes[]" class="form-control selected-option-dp"><option value="text">Text</option><option value="number">Number</option><option value="long_text">Long Text</option><option value="selected_options">Selected Options</option></select></div><div class="col-lg-3 col-md-3 col-sm-3"><input type="text" placeholder="Description" class="form-control" name="form_fields_description[]"></div><div class="col-lg-1 col-md-1 col-sm-1 btn btn-primary text-center" onclick="del(this);"><i class="material-icons">delete</i></div></div></div>';
                   
                   $("#create-form").append(htm);
                   /*

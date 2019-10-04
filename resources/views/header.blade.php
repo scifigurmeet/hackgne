@@ -1,7 +1,7 @@
 <?php
-//$userValue = request()->session()->get('gndecDOC');
-//$dbValue = getUserToken();
-//if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=True'); exit;}
+$userValue = request()->session()->get('gndecDOC');
+$dbValue = getUserToken();
+if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=True'); exit;}
 ?>
 <!--
 =========================================================

@@ -16,6 +16,13 @@
                     
                     <div class="row">
                       <div class="col-md-12">
+					  <div>
+					  <?php
+					  $data = getFileData(request()->id);
+					  $name = $data->name;
+					  ?>
+					  <button class="alert alert-info" style="width: 100%;">Selected File: <input type="text" class="form-control" readonly value="{{$name}}"></button>
+					  </div>
                     <form action="" method="post" enctype="multipart/form-data">
                         Send To:
                         <div class="form-group col col-5">
@@ -61,7 +68,7 @@
 			<input type="hidden" name="messageStatusID" value="newDraft">
 			<div class="row" style="padding:20px;">
 				
-				<button class="btn btn-danger" onclick="sendMessage();">Send <i class="fa fa-share"></i></button>
+				<button class="btn btn-danger">Send <i class="fa fa-share"></i></button>
 			</div>
                 
                 
@@ -75,17 +82,7 @@
       
       
       
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Send Documents</h4>
-                
-                </div>
-                <div class="card-body">
-      
+    
       
       
 <script>

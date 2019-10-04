@@ -42,6 +42,7 @@ function authorize(){
 
 function getUserToken(){
 	$username = request()->session()->get('username');
+	if(strlen($username)==0){header('Location: '.getHomeURL()."/login?success=False"); exit;}
 	return DB::table('users')->where('username',$username)->get()[0]->token;
 }
 
@@ -76,6 +77,13 @@ function logout(){
 
 function getAllGroups(){
 	$data = DB::table('groups')->get();
+	return $data;
+}
+
+function getFileData($id){
+	$data = DB::table('uploads')
+	->where('id',$id)
+	->get()[0];
 	return $data;
 }
 ?>
