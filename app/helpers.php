@@ -18,14 +18,16 @@ function authorize(){
 			$data = array();
 			$data['token'] = uniqid();
 			DB::table('users')->where('username',$username)->update($data);
-			request()->session()->put('gndecDOC', $data['token']);
-			request()->session()->put('username', $username);
+			$request->session()->put('gndecDOC', $data['token']);
+			$request->session()->put('username', $username);
+			echo 'Login Success';
 		}
 		else{
 			$data = array();
 			$data['token'] = uniqid();
 			DB::table('users')->where('username',$username)->update($data);
 			request()->session()->forget('gndecDOC');
+			header('Location: '.getHomeURL()); exit;
 		}
 	}
 	catch(Exception $ex){
@@ -33,6 +35,8 @@ function authorize(){
 		$data['token'] = uniqid();
 		DB::table('users')->where('username',$username)->update($data);
 		request()->session()->forget('gndecDOC');
+		echo 'Login Exception';
+		redirect('login?error=True&message='.$ex->getMessage());
 	}
 }
 
