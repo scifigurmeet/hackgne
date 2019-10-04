@@ -9,6 +9,9 @@
                   <p class="card-category"> Manage Your Private Document Sharing Groups</p>
                 </div>
                 <div class="card-body">
+				<div>
+					<a href="addGroup"><button class="btn btn-danger">Add New Group</button></a>
+				</div>
                   <div class="table-responsive">
                     <table class="table table-hover" id="allFiles">
                       <thead class="text-primary">
@@ -53,8 +56,7 @@ function getAllFiles(){
             {data: 'created_by_user_id'},
             {data: 'description'},
 			{render: function(data, type, row){
-				return '<a style="padding: 12px;" href="uploads/'+row.path+'" class="btn btn-info" download="download"><i class="material-icons">view_carousel</i>  Open Group</a>'
-				+'<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>';}}
+				return '<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>';}}
         ]
     });
 }
@@ -62,8 +64,8 @@ function getAllFiles(){
 function deleteFile(id){
 	if (confirm('Are you sure to DELETE this Document?')) {
 		$.ajax({
-      type: 'POST',
-      url: '{{getHomeURL()}}/deleteFile/'+id,
+      type: 'DELETE',
+      url: '{{getHomeURL()}}/deleteGroup/'+id,
       success: function(resultData) { $('#allFiles').DataTable().ajax.reload();},
       error: function(resultData) { $('#allFiles').DataTable().ajax.reload();}
 		});

@@ -175,4 +175,43 @@ function getUserID(){
 function getUsername($id){
     return $id = DB::table('users')->where('id',$id)->get()[0]->username;
 }
+
+function submitForm(){
+    $request = request();
+    $data = array();
+    $data['user_id'] = getUserID();
+    $data['form_id'] = $request->form_id;
+    $data['data'] = serialize($request->data);
+    //return dd($data['data']);
+    DB::table('form_submissions')->insert($data);
+}
+
+function addNewGroup(){
+	$request = request();
+	$data = array();
+	$data['group_name'] = $request->group_name;
+	$data['member_user_ids'] = $request->member_ids;
+	$data['created_by_user_id'] = getUserID();
+	DB::table('groups')->insert($data);
+	header('Location: '.getHomeURL()."/groups"); exit;
+}
+
+function deleteGroup(){
+	DB::table('groups')->where('id',request()->id)->delete();
+	echo 'Deleted Successfully';
+}
+
+function getAllForms(){
+	$data = DB::table('forms')->get();
+	return datatables()->of($data)->toJson();
+}
+
+function getFormSubmissionData(){
+	$id = request()->id;
+	$data = DB::table('form_submissions')
+	->where('form_id',$id)
+	->select('data')
+	->get();
+	return datatables()->of($data)->toJson();
+}
 ?>

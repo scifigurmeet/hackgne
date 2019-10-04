@@ -59,6 +59,10 @@ Route::get('/groups', function(){
     return view('groups');
 });
 
+Route::post('/submitForm', function(){
+    return submitForm();
+});
+
 Route::get('/sendDocument', function(){
     return view('SendFile');
 });
@@ -74,6 +78,39 @@ Route::get('/getAllGroups', function(){
 Route::post('/sendDocument', function(){
     return send_document();
 });
+
+Route::post('/addNewGroup', function(){
+    return addNewGroup();
+});
+
+Route::delete('/deleteGroup/{id}', function(){
+    return deleteGroup();
+});
+
+Route::get('/addGroup', function(){
+    return view('addGroup');
+});
+
+Route::get('/forms', function(){
+    return view('forms');
+});
+
+Route::get('/getAllForms', function(){
+    return getAllForms();
+});
+
+Route::get('/viewEntries', function(){
+    return view('viewEntries');
+});
+Route::get('/getFormSubmissionData', function(){
+    return getFormSubmissionData();
+});
+
+Route::get('/text2Image', function(){
+    return view('text2Image');
+});
+
+
 
 Route::get('/getAllFiles','Upload@showUploadedFiles');
 Route::get('/getUserFiles','Upload@showUserUploadedFiles');

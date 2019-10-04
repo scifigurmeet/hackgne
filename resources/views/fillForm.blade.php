@@ -14,21 +14,23 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <form class="form" id="create-form" method="post" action="addForm">
+                                    <form class="form" id="fill-form" method="post" action="submitForm">
+                                        <input type="hidden" name="form_id" value="{{ request()->id }}">
                                         <div class="row">
                                         <?php
                                             foreach($forms as $form) {
                                         ?>
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-3">
+                                                    <b>{{$form['field_name']}}</b>
                                                     <?php
                                                         if($form['field_type'] == 'long_text') {
                                                             ?>
-                                                            <textarea class="form-control" placeholder="{{$form['field_name']}}"></textarea>
+                                                            <textarea class="form-control" placeholder="{{$form['field_name']}}" name="data[]"></textarea>
                                                             <?php
                                                         }
                                                         else if($form['field_type'] == 'selected_options' && !is_null($form['field_description'])) {
                                                             ?>
-                                                            <select class="form-control">
+                                                            <select class="form-control" name="data[]">
                                                                 <option disabled selected>{{$form['field_name']}}</option>
                                                                 <?php
                                                                     foreach(explode("|", $form['field_description']) as $option) {
@@ -42,7 +44,7 @@
                                                         }
                                                         else {
                                                             ?>
-                                                            <input type="{{$form['field_type']}}" placeholder="{{$form['field_name']}}" name="name" class="form-control">
+                                                            <input type="{{$form['field_type']}}" placeholder="{{$form['field_name']}}" name="data[]" class="form-control">
                                                             <?php
                                                         }
                                                     ?>

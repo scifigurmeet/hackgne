@@ -32,7 +32,7 @@
                         <div class="form-group col col-5">
 					<select id="message_to" class="form-control" name="message_to" onchange="displayLogic(this.value);">
 					<option value="allSchoolStudents" selected>Everyone</option>
-					<option value="selectiveStudents">Groups</option>
+					<option value="selectiveStudents">Users</option>
 					</select>
 				</div>
 			

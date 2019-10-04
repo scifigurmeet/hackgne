@@ -109,10 +109,16 @@ if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=T
               <p>Groups</p>
             </a>
           </li>
-		  <li class="nav-item  <?php if($part == 'createForm') echo 'active'?>">
-            <a class="nav-link" href="createForm">
+		  <li class="nav-item  <?php if($part == 'forms') echo 'active'?>">
+            <a class="nav-link" href="forms">
               <i class="material-icons">list_alt</i>
-              <p>Create Form</p>
+              <p>Forms</p>
+            </a>
+          </li>
+		  <li class="nav-item  <?php if($part == 'text2Image') echo 'active'?>">
+            <a class="nav-link" href="text2Image">
+              <i class="material-icons">image</i>
+              <p>Text To Image</p>
             </a>
           </li>
         </ul>
