@@ -3,33 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class Upload extends Controller
 {
     public function uploadFile(Request $request) {
-      $file = $request->file('document');
-   
-      //Display File Name
-      echo 'File Name: '.$file->getClientOriginalName();
-      echo '<br>';
-   
-      //Display File Extension
-      echo 'File Extension: '.$file->getClientOriginalExtension();
-      echo '<br>';
-   
-      //Display File Real Path
-      echo 'File Real Path: '.$file->getRealPath();
-      echo '<br>';
-   
-      //Display File Size
-      echo 'File Size: '.$file->getSize();
-      echo '<br>';
-   
-      //Display File Mime Type
-      echo 'File Mime Type: '.$file->getMimeType();
-   
-      //Move Uploaded File
-      $destinationPath = 'uploads';
-      $file->move($destinationPath,$file->getClientOriginalName());
+		$file = $request->file('document');
+		$destinationPath = 'uploads';
+		$extension = $file->getClientOriginalExtension();
+		$realName = uniqid().".".$extension;
+		$file->move($destinationPath,$realName);
+		$data = array();
+		$data['name'] = $file->getClientOriginalName();
+		$data['mime_type'] = $extension;
+		$data['allowed_users'] = $file->getClientOriginalName();
+		$data['path'] = $realName;
+		$data['upload_user_id'] = getUserId();
+		DB::table('uploads')->insert($data);
+		return redirect('AllFiles?upload=Success');
    }
+   
+   public function showUploadedFiles(){
+	   $data = DB::table('uploads')->get();
+	   return datatables()->of($data)->toJson();
+   }
+   
+   
 }

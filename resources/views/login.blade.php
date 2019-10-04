@@ -37,16 +37,19 @@
       body {
           background: url("images/background-login.jpg");
           background-repeat: no-repeat;
-          background-size: cover;
+          /*background-size: 1920px 1080px;*/
       }
     .bmd-form-group {
         padding: 20px;
     }
+    .form-container {
+        margin-top: 70px;
+    }
     .toggle-btn {
-        position: absolute;
-        left: 50%;
-        top: 20%;
-        transform: translate(-50%, -20%);
+        position: relative;
+        margin-top: 10px;
+        margin-left: 50% !important;
+        transform: translateX(-50%);
     }
     .toggle-btn div{
         display: inline-block;
@@ -63,20 +66,21 @@
 
 <body class="">
     <div class="toggle-btn">
-              <div class="alert alert-danger login-select-btn">
+              <div class="alert alert-primary login-select-btn">
                   LOGIN
                 </div>
-                <div class="alert alert-danger signup-select-btn">
+                <div class="alert alert-primary signup-select-btn">
                   SIGN UP
                  </div>
     </div>
+    
 <div class="container form-container">
         
         <div class="row login-form-cont">
           <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 ml-auto mr-auto">
-            <form class="form" method="" action="">
+            <form class="form" method="" action="" id="login-form">
               <div class="card card-login">
-                <div class="card-header card-header-info text-center">
+                <div class="card-header card-header-primary text-center">
                   <h4 class="card-title">Login</h4>
                 </div>
                 <div class="card-body ">
@@ -87,7 +91,7 @@
                           <i class="material-icons">email</i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Username / Email" value="">
+                      <input type="text" class="form-control" placeholder="Username / Email" value="" name="login_username">
                     </div>
                   </span>
                   <span class="bmd-form-group">
@@ -97,12 +101,12 @@
                           <i class="material-icons">lock_outline</i>
                         </span>
                       </div>
-                      <input type="password" class="form-control" placeholder="Password" value="">
+                      <input type="password" class="form-control" placeholder="Password" value="" name="login_password">
                     </div>
                   </span>
                 </div>
-                <div class="card-footer justify-content-center">
-                  <a href="#pablo" class="btn btn-info btn-lg">Lets Go</a>
+                <div class="card-footer justify-content-center" onclick="javascript:login()">
+                  <a href="javascript:void()" class="btn btn-primary btn-lg">Lets Go</a>
                 </div>
               </div>
             </form>
@@ -111,12 +115,13 @@
         
         <div class="row signup-form-cont">
           <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 ml-auto mr-auto">
-            <form class="form" method="" action="">
+            <form class="form" method="" action="" id="signup-form">
               <div class="card card-login">
-                <div class="card-header card-header-info text-center">
+                <div class="card-header card-header-primary text-center">
                   <h4 class="card-title">Sign Up</h4>
                 </div>
                 <div class="card-body ">
+                    
                   <span class="bmd-form-group">
                     <div class="input-group container">
                       <div class="input-group-prepend row">
@@ -124,12 +129,18 @@
                           <i class="material-icons">person</i>
                         </span>
                       </div>
-                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                        <input type="text" class="form-control" placeholder="First Name" value="">
+                    <input type="text" class="form-control " placeholder="First Name" value="" name="signup_first_name">
+                    </div>
+                  </span>
+                  
+                  <span class="bmd-form-group">
+                    <div class="input-group container">
+                      <div class="input-group-prepend row">
+                        <span class="input-group-text">
+                          <i class="material-icons">person</i>
+                        </span>
                       </div>
-                      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Last Name" value="">
-                      </div>
+                    <input type="text" class="form-control " placeholder="Last Name" value="" name="signup_last_name">
                     </div>
                   </span>
                   
@@ -140,7 +151,7 @@
                           <i class="material-icons">face</i>
                         </span>
                       </div>
-                      <input type="email" class="form-control" placeholder="Username" value="">
+                      <input type="email" class="form-control" placeholder="Username" value="" name="signup_username">
                     </div>
                   </span>
                   
@@ -151,7 +162,7 @@
                           <i class="material-icons">email</i>
                         </span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Email" value="">
+                      <input type="text" class="form-control" placeholder="Email" value="" name="signup_email">
                     </div>
                   </span>
                   
@@ -162,7 +173,7 @@
                           <i class="material-icons">lock_outline</i>
                         </span>
                       </div>
-                      <input type="password" class="form-control" placeholder="Password" value="">
+                      <input type="password" class="form-control" placeholder="Password" value="" name="signup_password">
                     </div>
                   </span>
                   
@@ -173,13 +184,13 @@
                           <i class="material-icons">lock_outline</i>
                         </span>
                       </div>
-                      <input type="password" class="form-control" placeholder="Confirm Password" value="">
+                      <input type="password" class="form-control" placeholder="Confirm Password" value="" name="signup_confirm_password">
                     </div>
                   </span>
                   
                 </div>
-                <div class="card-footer justify-content-center">
-                  <a href="#pablo" class="btn btn-info btn-lg">Lets Go</a>
+                <div class="card-footer justify-content-center" onclick="javascript:signup()">
+                  <a href="javascript:void()" class="btn btn-primary btn-lg">Lets Go</a>
                 </div>
               </div>
             </form>
@@ -237,12 +248,10 @@
           $(".login-select-btn").on("click", function() {
               $(".login-form-cont").show();
               $(".signup-form-cont").hide();
-              $(".toggle-btn").css("top", "20%");
           });
           $(".signup-select-btn").on("click", function() {
               $(".login-form-cont").hide();
               $(".signup-form-cont").show();
-              $(".toggle-btn").css("top", "10%");
           });
           
         $sidebar = $('.sidebar');

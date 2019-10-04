@@ -1,6 +1,10 @@
 <?php
 //Helpers File
 
+function getHomeURL(){
+	return 'http://192.168.16.113/dms';
+}
+
 function getUploadsSize(){
 	  $size = 0;
 
@@ -18,5 +22,9 @@ function getUserFullName(){
 	->select('first_name','last_name')
 	->get()[0];
 	return $full_name = $data->first_name." ".$data->last_name;
+}
+
+function getUserId(){
+	return 0;
 }
 ?>
