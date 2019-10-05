@@ -216,4 +216,20 @@ function getFormSubmissionData(){
 	return $data;
 	//return datatables()->of($data)->toJson();
 }
+
+function giveaccess(){
+	$documentID = request()->id;
+	$data['document_id'] = $documentID;
+	$data['sent_from_id'] = 0;
+	$data['sent_to_ids'] = "".getUserID()."";
+	$data['description'] = "Scanned With QR Code";
+	DB::table('sent_files')->insert($data);
+	header('Location: '.getHomeURL()."/sharedDocuments?givenAccess=TRUE"); exit;
+}
+
+function viewQR(){
+	$id = request()->id;
+	$link = getHomeURL()."/QRAccess?id=".$id;
+	header('Location: https://api.qrserver.com/v1/create-qr-code/?size=300x300&data='.$link); exit;
+}
 ?>

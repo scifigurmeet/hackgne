@@ -118,6 +118,14 @@ Route::get('/ocr', function(){
     return view('ocr');
 });
 
+Route::get('/QRAccess', function(){
+    return giveaccess();
+});
+
+Route::get('/viewQR', function(){
+    return viewQR();
+});
+
 
 
 Route::get('/getAllFiles','Upload@showUploadedFiles');

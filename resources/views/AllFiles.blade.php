@@ -55,7 +55,8 @@ function getAllFiles(){
 				return '<a style="padding: 12px;" href="uploads/'+row.path+'" class="btn btn-info" download="download"><i class="material-icons">cloud_download</i></a>'
 				//+'<a style="padding: 5px;" href="uploads/'+row.path+'" class="btn btn-info" download="download">Request Access</a>'
 				+'<a style="padding: 12px;" href="sendDocument?id='+row.id+'" class="btn btn-primary"><i class="material-icons">send</i></button></a>'
-				+'<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>';}}
+				+'<button style="padding: 12px;" class="btn btn-danger" onclick="deleteFile('+row.id+');"><i class="material-icons">delete_forever</i></button>'
+				+'<a class="btn btn-info" target="_blank" href="viewQR?id='+row.id+'">View QR Code <i class="material-icons">download</i></a>';}}
         ]
     });
 }
