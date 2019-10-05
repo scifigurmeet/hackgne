@@ -121,6 +121,18 @@ if($userValue != $dbValue){header('Location: '.getHomeURL().'/login?loginFirst=T
               <p>Text To Image</p>
             </a>
           </li>
+		  <li class="nav-item  <?php if($part == 'reverseImageSearch') echo 'active'?>">
+            <a class="nav-link" href="reverseImageSearch">
+              <i class="material-icons">important_devices</i>
+              <p>Reverse Image Search</p>
+            </a>
+          </li>
+		  <li class="nav-item  <?php if($part == 'ocr') echo 'active'?>">
+            <a class="nav-link" href="ocr">
+              <i class="material-icons">offline_bolt</i>
+              <p>Text Recognition (OCR)</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

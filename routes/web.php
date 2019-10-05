@@ -110,6 +110,14 @@ Route::get('/text2Image', function(){
     return view('text2Image');
 });
 
+Route::get('/reverseImageSearch', function(){
+    return view('reverseImageSearch');
+});
+
+Route::get('/ocr', function(){
+    return view('ocr');
+});
+
 
 
 Route::get('/getAllFiles','Upload@showUploadedFiles');
