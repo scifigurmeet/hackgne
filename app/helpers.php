@@ -2,7 +2,7 @@
 //Helpers File
 
 function getHomeURL(){
-	return 'http://192.168.16.113/dms';
+	return 'http://localhost/dms';
 }
 
 function authorize(){
